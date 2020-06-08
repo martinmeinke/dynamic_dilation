@@ -5,3 +5,10 @@ The Layer applies the same convolution kernels using different dilation factors,
 
 
 ![Image](dynamic_dilation.png)
+
+```python
+# Interpolate dilation factors between 1 and 5, for ranges between 50 and 0 (clip dilation factor outside range)
+dd = DynamicDilation(in_channels, out_channels, min_dil_range=50, max_dil_range=0, smallest_dil=1, largest_dil=5)
+# pass features from prev layer (or input) along with the range image
+out_features = dd(in_features, in_range_image)
+```
